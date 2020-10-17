@@ -10,7 +10,6 @@ const l1 = (p)=>{
         idle.preload(p);
         walk.preload(p);
         jump.preload(p);
-        rock.preload(p);
         //Function to load sprites, textures, etc
     }
 
@@ -21,7 +20,6 @@ const l1 = (p)=>{
         idle.loadAnimation(p);
         walk.loadAnimation(p);
         jump.loadAnimation(p);
-        rock.loadAnimation(p);
     }
 
     p.draw = function()
@@ -36,8 +34,6 @@ const l1 = (p)=>{
 
         jump.show(250, 350, p);
         jump.animate();
-
-        rock.show(250, 400, p);
     }
 
     p.mousePressed = function()
