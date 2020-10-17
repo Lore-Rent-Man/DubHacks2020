@@ -1,4 +1,4 @@
-class SpritePNG{
+class Sprite{
     constructor(speed, spritelink, spritedata){
         this.x = 0;
         this.y = 0;
@@ -12,7 +12,10 @@ class SpritePNG{
     }
 
     preload(p){
-        this.spritedata = p.loadJSON(this.spritedata);
+        if(this.spritedata)
+        {
+            this.spritedata = p.loadJSON(this.spritedata);
+        }
         this.spritesheet = p.loadImage(this.spritelink);
     }
 
@@ -33,9 +36,62 @@ class SpritePNG{
         }
     }
 
-    show(posX, posY, offset, frameCount, p)
+    show(posX, posY, p, offset = 0, frameCount = 0)
     {
-        let index = offset + (p.floor(this.index) % frameCount);
+        if(this.animation.length == 1)
+        {
+            p.image(this.animation[0], posX, posY);
+        }
+        else
+        {
+            let index = offset + (p.floor(this.index) % frameCount);
+            p.image(this.animation[index], posX, posY);
+        }
+    }
+
+    animate()
+    {
+        this.index += this.speed;
+    }
+}
+
+class BunnySprite{
+    constructor(speed, spritelink, frameCount){
+        this.x = 0;
+        this.y = 0;
+
+        this.speed = speed;
+        this.spritelink = spritelink;
+        this.animation = [];
+        this.index = 0;
+        this.spritesheet;
+
+        this.frameCount = frameCount;
+    }
+
+    preload(p){
+        this.spritesheet = p.loadImage(this.spritelink);
+    }
+
+    loadAnimation(){
+        let posX = 0;
+        for(let i=0;i<this.frameCount;i++)
+        {
+            let img = this.spritesheet.get(posX, 0, 32, 32);
+            this.animation.push(img);
+            posX += 32;
+        }
+    }
+
+    show(posX, posY, p)
+    {
+        let index = p.floor(this.index) % this.frameCount;
+        p.image(this.animation[index], posX, posY);
+    }
+
+    showFrames(posX, posY, offset, frameCount, p)
+    {
+        let index = offset + p.floor(this.index) % frameCount;
         p.image(this.animation[index], posX, posY);
     }
 
