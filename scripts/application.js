@@ -1,12 +1,11 @@
 class Application{
-  constructor(player){
+  constructor(){
     this.levels = [];
     this.end; 
     this.totalLevels = 0;
     this.levelCounter = 0;
-    this.windowHeight = window.innerHeight;
-    this.windowWidth = window.innerWidth;
-    this.player = player;
+    this.windowHeight = 500;
+    this.windowWidth = 500;
   };
 
   pushLevel(level)
