@@ -108,7 +108,7 @@ const level2 = (p)=>{
 
     p.keyPressed = () => 
     {
-        if (p.keyCode = KeyW) {
+        if (p.keyCode == p.KeyW) {
             //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
             p.remove();
             //Example trigger for next level
