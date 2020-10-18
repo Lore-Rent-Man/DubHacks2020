@@ -22,6 +22,9 @@ const l1 = (p)=>{
     {
         //Function that draws each frame
         p.image(backgroundImg, -300, -300);
+        p.fill(255, 204, 0);
+        p.rect(100, 430, 60, 10);
+        p.rect(200, 350, 60, 10);
         if(player1.posY > app.windowHeight - 32)
         {
             player1.posY = app.windowHeight - 32;
@@ -39,6 +42,6 @@ const l1 = (p)=>{
 
     p.keyPressed = function()
     {
-        
+
     }
 }

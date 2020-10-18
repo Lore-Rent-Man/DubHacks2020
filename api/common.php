@@ -43,7 +43,7 @@
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // $db = new PDO($ds, $user, $password, $options);
     // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connection successful!";
+    // echo "Connection successful!";
   }
   catch (PDOException $ex) {
     db_error_message("Can not connect to the database.", $ex);

@@ -9,7 +9,7 @@ class player{
 
         this.speed = 3;
         this.gravity = 0.5;
-        this.numJumps = 5;
+        this.numJumps = 2;
 
         this.posX = 0;
         this.posY = 0;
@@ -48,7 +48,6 @@ class player{
 
         p.keyPressed = () =>
         {
-            console.log(p.keyCode);
             if(p.keyCode == p.UP_ARROW && ((!this.isJumping) || this.numJumps != 0))
             {
                 this.velocityY = -8;
@@ -69,8 +68,8 @@ class player{
 
     draw(p)
     {
-        if(!this.isDead)
-        {
+        if(!this.isDead){
+
             if (p.keyIsDown(p.LEFT_ARROW)) {
                 this.velocityX = -this.speed;
                 this.moveLeft = true;
@@ -78,7 +77,8 @@ class player{
             else if (p.keyIsDown(p.RIGHT_ARROW)) {
                 this.velocityX = this.speed;
                 this.moveLeft = false;
-            }else
+            }
+            else
             {
                 this.velocityX = 0;
             }
@@ -94,7 +94,7 @@ class player{
             {
                 player1.posY = app.windowHeight - 32;
                 this.isJumping = false;
-                this.numJumps = 5;
+                this.numJumps = 2;
             }
             if(p.isJumping)
             {

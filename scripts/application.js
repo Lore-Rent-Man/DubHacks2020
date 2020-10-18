@@ -1,7 +1,7 @@
 class Application{
   constructor(){
     this.levels = [];
-    this.end; 
+    this.end;
     this.totalLevels = 0;
     this.levelCounter = 0;
     this.windowHeight = 500;
@@ -25,7 +25,7 @@ class Application{
   };
 
   nextLevel()
-  { 
+  {
     this.levelCounter++;
     if(this.levelCounter <= this.totalLevels)
     {
