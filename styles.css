@@ -1,3 +1,87 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
+  }
+
+#chat-room, #sign-in-page {
+    text-align: center;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
 .hidden {
     display: none;
+}
+
+p {
+    font-size: 50px;
+}
+
+button {
+    margin: 20px;
+    background-color: #e7e7e7;
+    padding: 10px 30px;
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+input {
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 5%;
+    margin: 8px 0;
+}
+
+#username-input, #password-input {
+    margin: 15px;
+}
+
+#chat-box {
+    margin: auto;
+    height: 200px;
+    width: 300px;
+}
+
+#chat-history {
+    height: 600px;
+    width: 800px;
+    margin: auto;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    background-color: aquamarine;
+    padding: 20px;
+    border: 20px outset pink;
+    box-shadow: 0 0 0 20px skyblue;
+    border-radius: 12px;
+    text-align: left;
+}
+
+#flex {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+#chat-room > p {
+    font-size: 35px;
 }

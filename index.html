@@ -4,29 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js example</title>
-  <style>
-    html, body {
-      height: 100%;
-    }
+  <title>2020dubgame</title>
 
-    body {
-      margin: 0;
-      display: flex;
+  <link href="styles.css" type="text/css" rel="stylesheet" />
 
-      /* This centers our sketch horizontally. */
-      justify-content: center;
-
-      /* This centers our sketch vertically. */
-      align-items: center;
-    }
-  </style>
 
   <!-- P5 and Collision library -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5.collide2d"></script>
 
   <!-- Personal scripts -->
+  <script src="scripts/lib.js"></script>
   <script src="scripts/traps.js"></script>
   <script src="scripts/circleTrap.js"></script>
   <script src="scripts/application.js"></script>
@@ -40,7 +28,37 @@
 </head>
 
 <body>
-  <div id='myContainer'></div>
+  <div class="hidden" id='myContainer'></div>
+
+  <section id="sign-in-page">
+    <div id="sign-in-options">
+      <button class="option-btn" id="log-in-btn">log in</button>
+      <button class="option-btn" id="sign-up-btn">sign up</button>
+    </div>
+    <form class="hidden" id="sign-in-form">
+      <p></p>
+      <div>
+        <label for="username-input">Username:</label>
+        <input id="username-input" name="username" type="text" required />
+      </div>
+      <div>
+        <label for="password-input">Password:</label>
+        <input id="password-input" name="password" type="password" required />
+      </div>
+      <button id="submit-btn" type="submit">Go!</button>
+    </form>
+  </section>
+
+  <section class="hidden" id="chat-room">
+      <h1>Congratulations! You've beat the game!</h1>
+      <p>Share your thoughts and experience with others!<p>
+      <div id="chat-history"></div>
+      <div id="flex">
+        <label for="chat-box">Say Something</label> <br />
+        <input id="chat-box" required />
+      <div>
+      <button id="send-chat" type="submit">Make a Post</button>
+  </section>
 </body>
 
 </html>

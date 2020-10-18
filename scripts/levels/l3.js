@@ -45,6 +45,8 @@ const level3 = (p)=>{
             $("myContainer").classList.add("hidden");
             //TODO: game win
             p.remove();
+            qs("canvas").remove();
+            $("chat-room").classList.remove("hidden");
         }
         //Function that draws each frame
         p.image(backgroundImg, 0, 0);
