@@ -23,20 +23,20 @@ class trap {
             player.posX+32,
             player.posY+16,
             this.x,
-            this.y+40,
-            this.x+20,
+            this.y+32,
+            this.x+16,
             this.y, 
-            this.x+40,
-            this.y+40
+            this.x+32,
+            this.y+32
         ) || p.collidePointTriangle(
             player.posX+16,
             player.posY+32,
             this.x,
-            this.y+40,
-            this.x+20,
+            this.y+32,
+            this.x+16,
             this.y, 
-            this.x+40,
-            this.y+40
+            this.x+32,
+            this.y+32
         );
     }
 }

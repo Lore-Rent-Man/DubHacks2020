@@ -127,7 +127,7 @@ class player{
             {
                 this.drawAction(p, 2);
             }
-            else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW)))
+            else if(p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW))
             {
                 this.drawAction(p, 3);
             } else
