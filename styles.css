@@ -3,7 +3,6 @@ html, body {
 }
 
 body {
-    
     display: flex;
 
     /* This centers our sketch horizontally. */
@@ -19,6 +18,10 @@ body {
     font-size: 30px;
 }
 
+main {
+    margin: 0px;
+}
+
 #chat-room {
     overflow-y: scroll;
     -ms-overflow-style: none;
@@ -30,7 +33,7 @@ body {
 }
 
 p {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 button {
