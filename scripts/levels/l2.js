@@ -5,16 +5,16 @@ const level2 = (p)=>{
     player1.moveLeft = true;
 
     plat1 = new platform(650, 475, 100, 10);
-    plat2 = new platform(550, 400, 10, 60);
-    plat3 = new platform(450, 320, 10, 60);
-    plat4 = new platform(350, 490, 10, 10);
+    plat2 = new platform(550, 400, 40, 60);
+    plat3 = new platform(450, 320, 40, 60);
+    plat4 = new platform(350, 490, 40, 10);
     plat5 = new platform(0, 420, 260, 10);
-    plat6 = new platform(175, 490, 10, 10);
-    plat7 = new platform(10, 490, 10, 10);
-    plat8 = new platform(30, 400, 120, 10);
+    plat6 = new platform(175, 490, 40, 10);
+    plat7 = new platform(10, 490, 50, 10);
+    plat8 = new platform(30, 410, 120, 10);
     plat9 = new platform(100, 250, 120, 10);
     plat10 = new platform(300, 150, 400, 10);
-    fallingplatform = new platform(60, 300, 120, 10);
+    fallingplatform = new platform(70, 320, 120, 10);
     let fpVelocity = 0;
     let fpGravity = 0;
 
@@ -76,7 +76,7 @@ const level2 = (p)=>{
                 traps[0] = new spikes(547, -20, 0, 0, 0, p);
                 traps[0].rotate(p, p.PI);
                 traps[1] = new spikes(447, 520, 0, 0, 0, p);
-                fallingplatform = new platform(60, 300, 120, 10);
+                fallingplatform = new platform(70, 320, 120, 10);
                 fpVelocity = 0;
                 fpGravity = 0;
                 drawPlats = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, fallingplatform];
@@ -96,7 +96,13 @@ const level2 = (p)=>{
         }
         if(checkCollide(p, fallingplatform, player1))
         {
-            fpGravity = 0.1;
+            fpGravity = 0.05;
+        }
+
+        if(player1.posX + 32 >= 685 && player1.posY < 50)
+        {
+            p.remove();
+            app.nextLevel();
         }
     }
 

@@ -7,7 +7,7 @@ const level1 = (p)=>{
     plat2 = new platform(200, 350, 60, 10);
     plat3 = new platform(380, 350, 60, 10);
     plat4 = new platform(0, 260, 440, 10);
-    plat5 = new platform(550, 150, 10, 500);
+    plat5 = new platform(550, 150, 50, 500);
     plat6 = new platform(0, 175, 60, 10);
     plat7 = new platform(100, 100, 300, 10);
     plat8 = new platform(650, 50, 100, 450, [50, 50, 50]);
@@ -30,7 +30,7 @@ const level1 = (p)=>{
         firstSpike = new spikes(242, 350-18, 0, 0, 0, p);
         secondSpike = new spikes(300, 270, 0, 0, 0, p);
         secondSpike.rotate(p, p.PI);
-        thirdSpike = new spikes(400, 270-28, 0, 0, 0, p);
+        thirdSpike = new spikes(410, 270-28, 0, 0, 0, p);
         traps.push(firstSpike);
         traps.push(secondSpike);
         traps.push(thirdSpike);
