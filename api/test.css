@@ -31,8 +31,8 @@ button:hover {
 
 input {
     font-size: 25px;
-    padding: 10px 30px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 5%;
     margin: 8px 0;
 }
 
@@ -41,6 +41,7 @@ input {
 }
 
 #chat-box {
+    margin: auto;
     height: 200px;
     width: 300px;
 }
@@ -48,8 +49,24 @@ input {
 #chat-history {
     height: 600px;
     width: 800px;
+    margin: auto;
     overflow-y: scroll;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
     background-color: aquamarine;
+    padding: 20px;
+    border: 20px outset pink;
+    box-shadow: 0 0 0 20px skyblue;
+    border-radius: 12px;
+    text-align: left;
+}
+
+#flex {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+#chat-room > p {
+    font-size: 35px;
 }
