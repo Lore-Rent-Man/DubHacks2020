@@ -99,4 +99,42 @@ class BunnySprite{
     {
         this.index += this.speed;
     }
+
+    walk(p)
+    {
+        p.keyPressed = function()
+        {
+            console.log("key pressed: ", p.keyCode);
+            if (p.keyCode === p.UP_ARROW) {
+              this.y -= speed;
+            } else if (p.keyCode === p.DOWN_ARROW) {
+              this.y += speed;
+            } else if (p.keyCode === p.RIGHT_ARROW) {
+              this.x += speed;
+            } else if (p.keyCode === p.LEFT_ARROW) {
+              this.x -= speed;
+            } else {
+              console.log("wrong key");
+            }
+        }
+    }
+
+    jump(p)
+    {
+        p.keyPressed = function()
+        {
+            console.log("key pressed: ", p.keyCode);
+            if (p.keyCode === p.UP_ARROW) {
+              this.y -= speed;
+            } else if (p.keyCode === p.DOWN_ARROW) {
+              this.y += speed;
+            } else if (p.keyCode === p.RIGHT_ARROW) {
+              this.x += speed;
+            } else if (p.keyCode === p.LEFT_ARROW) {
+              this.x -= speed;
+            } else {
+              console.log("wrong key");
+            }
+        }
+    }
 }
