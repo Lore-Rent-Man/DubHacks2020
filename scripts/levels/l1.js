@@ -79,11 +79,14 @@ const level1 = (p)=>{
             app.nextLevel();
         }
     }
-    p.mousePressed = function()
+    
+    p.keyPressed = () => 
     {
-        // ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
-        p.remove();
-        // Example trigger for next level
-        app.nextLevel();
+        if (p.keyCode = KeyW) {
+            //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
+            p.remove();
+            //Example trigger for next level
+            app.nextLevel();
+        }
     }
 }
