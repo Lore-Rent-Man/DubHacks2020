@@ -32,7 +32,7 @@ body {
 }
 
 p {
-    font-size: 50px;
+    font-size: 25px;
 }
 
 button {
@@ -63,13 +63,13 @@ input {
 
 #chat-box {
     margin: auto;
-    height: 200px;
+    height: 100px;
     width: 300px;
 }
 
 #chat-history {
-    height: 600px;
-    width: 800px;
+    height: 400px;
+    width: 600px;
     margin: auto;
     overflow-y: scroll;
     -ms-overflow-style: none;
