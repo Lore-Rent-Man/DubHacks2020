@@ -19,7 +19,7 @@ const level3 = (p)=>{
         player1.preloadSprites(p);
         backgroundImg = p.loadImage('../sprite_folders/backgrounds/meadow.jpg');
 
-        for(let i = 0; i < 20; i++)
+        for(let i = 0; i < 15; i++)
         {
             traps[i] = new circleTrap(Math.floor(Math.random() * app.windowWidth),
             Math.floor(Math.random() * app.windowHeight), 10);
