@@ -105,7 +105,7 @@ class player{
                         this.posX = plats[i].posX + plats[i].width - 7;
                     } else
                     //left
-                    if (this.posX + 25 > plats[i].posX && this.posX + 25 < plats[i].posX + 15) {
+                    if (this.posX + 25 > plats[i].posX && this.posX + 25 < plats[i].posX) {
                         console.log(this.posX +" "+plats[i].posX);
                         this.posX = plats[i].posX - 25;
                     } else
