@@ -26,6 +26,7 @@
     }
 
     function showChats(data) {
+        $("chat-history").innerHTML = "";
         let cids = new Array();
         for (let i = data.length - 1; i >= 0; i--) {
             let msg = document.createElement("p");
