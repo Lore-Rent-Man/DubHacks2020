@@ -35,7 +35,6 @@ const level3 = (p)=>{
         player1.loadAnimations(p);
         player1.setRespawnPoint(330, 468);
         flag.resize(32, 32);
-
     }
 
     p.draw = function()
@@ -50,7 +49,7 @@ const level3 = (p)=>{
             $("chat-room").classList.remove("hidden");
         }
         //Function that draws each frame
-        p.image(backgroundImg, 0, 0);
+        p.image(backgroundImg, -300, -300);
         p.image(flag, 685, 10 + p.sin(p.frameCount/60) * 5);
         p.fill(255, 204, 0);
         player1.draw(p, plats, true);
