@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-    margin: 0;
+    
     display: flex;
 
     /* This centers our sketch horizontally. */
@@ -11,9 +11,7 @@ body {
 
     /* This centers our sketch vertically. */
     align-items: center;
-  }
 
-#chat-room, #sign-in-page {
     text-align: center;
     margin-top: 200px;
     margin-left: auto;
@@ -31,8 +29,12 @@ body {
     display: none;
 }
 
+h1 {
+
+}
+
 p {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 button {
@@ -51,7 +53,7 @@ button:hover {
 }
 
 input {
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px;
     border-radius: 5%;
     margin: 8px 0;
@@ -89,5 +91,5 @@ input {
 }
 
 #chat-room > p {
-    font-size: 35px;
+    font-size: 25px;
 }
