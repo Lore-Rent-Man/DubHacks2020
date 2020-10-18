@@ -5,7 +5,7 @@ const level3 = (p)=>{
     player1 = new player(330, 468);
     player1.moveLeft = true;
 
-    plat1 = new platform(650, 475, 100, 10);
+    plat1 = new platform(650, 445, 100, 10);
     plat2 = new platform(550, 300, 100, 10);
     plat3 = new platform(450, 300, 100, 10);
     plat4 = new platform(350, 350, 100, 10);
@@ -75,7 +75,7 @@ const level3 = (p)=>{
             arrayItem.velocityY = Math.min(5, arrayItem.velocityY);
             arrayItem.velocityY = Math.max(-5, arrayItem.velocityY);
 
-            
+
             if (arrayItem.x >= app.windowWidth || arrayItem.x <= 0) {
                 arrayItem.velocityX *= -1;
             }

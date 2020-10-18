@@ -56,7 +56,7 @@ class player{
         {
             if (p.keyCode == p.UP_ARROW && ((!this.isJumping) || this.numJumps != 0))
             {
-                this.velocityY = -7;
+                this.velocityY = -8;
                 this.isJumping = true;
                 this.numJumps--;
                 this.onPlatform = false;

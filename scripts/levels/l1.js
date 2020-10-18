@@ -7,7 +7,7 @@ const level1 = (p)=>{
     plat2 = new platform(200, 350, 60, 10);
     plat3 = new platform(380, 350, 60, 10);
     plat4 = new platform(0, 260, 440, 10);
-    plat5 = new platform(550, 150, 10, 500);
+    plat5 = new platform(550, 150, 50, 500);
     plat6 = new platform(0, 175, 60, 10);
     plat7 = new platform(100, 100, 300, 10);
     plat8 = new platform(650, 50, 100, 450, [50, 50, 50]);
