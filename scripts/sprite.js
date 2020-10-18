@@ -39,7 +39,7 @@ class Sprite{
     }
 
     show(posX, posY, p, offset = 0, frameCount = 0)
-    {
+    { 
         if(this.animation.length == 1)
         {
             p.image(this.animation[0], posX, posY);

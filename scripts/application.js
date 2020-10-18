@@ -5,7 +5,7 @@ class Application{
     this.totalLevels = 0;
     this.levelCounter = 0;
     this.windowHeight = 500;
-    this.windowWidth = 500;
+    this.windowWidth = 750;
   };
 
   pushLevel(level)

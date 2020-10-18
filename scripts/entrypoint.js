@@ -1,3 +1,3 @@
 app = new Application();
-app.pushLevel(l1);
+app.pushLevel(level1);
 app.startGame();

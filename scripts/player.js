@@ -1,5 +1,5 @@
 class player{
-    constructor(){
+    constructor(posX, posY){
 
         const idle  = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
         const walk  = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
@@ -12,8 +12,8 @@ class player{
         this.gravity = 0.5;
         this.numJumps = 2;
 
-        this.posX = 0;
-        this.posY = 0;
+        this.posX = posX;
+        this.posY = posY;
         this.velocityX = 0;
         this.velocityY = 0;
         this.size = 0;
@@ -27,6 +27,7 @@ class player{
 
         this.moveLeft = false;
         this.isJumping = false;
+        this.onPlatform = false;
 
         this.isDead = false;
         this.deadFrameCount = 0;
@@ -58,6 +59,7 @@ class player{
                 this.velocityY = -7;
                 this.isJumping = true;
                 this.numJumps--;
+                this.onPlatform = false;
             }
             if (p.keyCode == 82 && this.deadFrameCount >= 8/0.2)
             {
@@ -94,6 +96,35 @@ class player{
                 this.velocityX = 0;
             }
 
+            for (let i=0; i<plats.length; i++) {
+                if (this.checkCollide(p, plats[i])) {
+                    if (this.posY <= plats[i].posY + plats[i].height + 2 && this.posY > plats[i].posY) 
+                    {
+                        //bottom
+                        if(this.velocityY < 0)
+                        {
+                            this.velocityY = 0;
+                        }
+                        this.posY = plats[i].posY + plats[i].height - 3;
+                    } 
+                    else if (this.posY + 32 >= plats[i].posY + plats[i].height)
+                    {
+                        this.velocityX = 0;
+                    }
+                    else if (this.posY + 32 >= plats[i].posY) 
+                    {
+                        if(!p.keyIsDown(p.UP_ARROW))
+                        {
+                            this.posY = plats[i].posY - 32;
+                            this.isJumping = false;
+                            this.velocityY = 0;
+                            this.numJumps = 2;
+                            this.onPlatform = true;
+                        }
+                    }
+                }
+            }
+
             this.velocityY += this.gravity;
 
             this.posX += this.velocityX;
@@ -106,23 +137,6 @@ class player{
                 this.numJumps = 2;
             }
 
-            for (let i=0; i<plats.length; i++) {
-                if (this.checkCollide(p, plats[i])) {
-                    // buttom
-                    if (this.posY <= plats[i].posY + plats[i].height && this.posY > plats[i].posY) {
-                        console.log(0);
-                        this.posY = plats[i].posY + plats[i].height;
-                    } else
-                    // top
-                    if (this.posY + 32 >= plats[i].posY) {
-                        console.log(1);
-                        this.posY = plats[i].posY - 32;
-                        this.isJumping = false;
-                        this.numJumps = 2;
-                        this.velocityY = 0;
-                    }
-                }
-            }
             if(p.isJumping)
             {
                 this.drawAction(p, 2);
@@ -162,7 +176,7 @@ class player{
     }
 
     checkCollide(p, plat) {
-        return p.collideRectRect(this.posX, this.posY, 32, 32, plat.posX, plat.posY, plat.width, plat.height);
+        return p.collideRectRect(this.posX, this.posY, 27, 32, plat.posX, plat.posY, plat.width, plat.height);
     }
 
     setRespawnPoint(x, y)
