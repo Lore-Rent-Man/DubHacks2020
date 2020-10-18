@@ -17,6 +17,7 @@ while (true) {
         array_push($curr_char_list, $row["cid"]);
         // echo $row["tid"];
     }
+break;
 
 //     // if last chat list is null or there's a difference between the last and
 //     //  current chat list, send the client the new chat list
