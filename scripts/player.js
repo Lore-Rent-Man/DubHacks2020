@@ -76,9 +76,6 @@ class player{
     draw(p, plats)
     {
         if(!this.isDead){
-            for (let i=0; i<plats.length; i++)
-                if (this.checkCollide(p, plats[i]))
-                this.velocityX = 0;
             if (p.keyIsDown(p.LEFT_ARROW)) {
                 this.velocityX = -this.speed;
                 this.moveLeft = true;
@@ -108,14 +105,21 @@ class player{
 
             for (let i=0; i<plats.length; i++) {
                 if (this.checkCollide(p, plats[i])) {
+                    //right
+                    if (this.posX < plats[i].posX + plats[i].width - 7 && this.posX > plats[i].posX + plats[i].width - 15) {
+                        this.posX = plats[i].posX + plats[i].width - 7;
+                    } else
+                    //left
+                    if (this.posX + 25 > plats[i].posX && this.posX + 25 < plats[i].posX + 15) {
+                        console.log(this.posX +" "+plats[i].posX);
+                        this.posX = plats[i].posX - 25;
+                    } else
                     // buttom
-                    if (this.posY <= plats[i].posY + plats[i].height && this.posY > plats[i].posY) {
-                        console.log(0);
+                    if (this.posY < plats[i].posY + plats[i].height && this.posY > plats[i].posY + plats[i].height - 15) {
                         this.posY = plats[i].posY + plats[i].height;
                     } else
                     // top
-                    if (this.posY + 32 >= plats[i].posY) {
-                        console.log(1);
+                    if (this.posY + 32 > plats[i].posY && this.posY + 32 < plats[i].posY + 15) {
                         this.posY = plats[i].posY - 32;
                         this.isJumping = false;
                         this.numJumps = 2;
@@ -162,7 +166,7 @@ class player{
     }
 
     checkCollide(p, plat) {
-        return p.collideRectRect(this.posX, this.posY, 32, 32, plat.posX, plat.posY, plat.width, plat.height);
+        return p.collideRectRect(this.posX, this.posY, 32, 32, plat.posX+10, plat.posY, plat.width-10, plat.height);
     }
 
     setRespawnPoint(x, y)

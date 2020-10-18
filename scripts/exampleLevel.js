@@ -1,8 +1,8 @@
 //Loading animations
 let spike = new Sprite(1, '../sprite_folders/traps/output-onlinepngtools.png');
 player1 = new player();
-plat1 = new platform(100, 430, 60, 10);
-plat2 = new platform(200, 350, 60, 10);
+plat1 = new platform(100, 430, 60, 100);
+plat2 = new platform(200, 350, 60, 100);
 plats=[plat1, plat2];
 let traps = [];
 
@@ -34,13 +34,13 @@ const l1 = (p)=>{
         //Function that draws each frame
         p.image(backgroundImg, -300, -300);
         p.fill(255, 204, 0);
-        p.rect(100, 430, 60, 10, 5);
-        p.rect(200, 350, 60, 10, 5);
+        p.rect(100, 430, 60, 100, 5);
+        p.rect(200, 350, 60, 100, 5);
         player1.draw(p, plats);
-        for(let i=0;i<10;i++)
+        /*for(let i=0;i<10;i++)
         {
             traps[i].draw(p, player1);
-        }
+        }*/
     }
     p.mousePressed = function()
     {
