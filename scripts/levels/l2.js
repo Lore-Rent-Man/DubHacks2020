@@ -108,9 +108,9 @@ const level2 = (p)=>{
 
     p.mousePressed = function()
     {
-        p.remove();
-        //Example trigger for next level
-        app.nextLevel();
+        // p.remove();
+        // //Example trigger for next level
+        // app.nextLevel();
     }
 }
 

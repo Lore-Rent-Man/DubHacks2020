@@ -86,9 +86,9 @@ const level3 = (p)=>{
 
     p.mousePressed = function()
     {
-        //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
-        p.remove();
-        qs("body").style.margin = "200px";
-        $("chat-room").classList.remove("hidden");
+        // //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
+        // p.remove();
+        // qs("body").style.margin = "200px";
+        // $("chat-room").classList.remove("hidden");
     }
 }
