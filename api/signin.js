@@ -1,7 +1,6 @@
 (function() {
     "use strict";
 
-    const MY_SERVER = "http://192.168.1.115:8888/pokedex/";
     window.addEventListener("load", init);
 
     function init() {
@@ -37,7 +36,7 @@
     function submitSignIn(fileName) {
         let params = new FormData($("sign-in-form"));
 
-        fetch(MY_SERVER + fileName, {method: "POST", body: params})
+        fetch(fileName, {method: "POST", body: params})
             .then(checkStatus)
             .then(resp => resp.json())
             .then(response)
@@ -58,7 +57,7 @@
         pid = data.pid;
         username = data.username;
     }
-    
+
     function showMainPage() {
         $("sign-in-page").classList.add("hidden");
         $("main-page").classList.remove("hidden");
@@ -75,5 +74,13 @@
 
     function handleError(error) {
         alert(error);
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    function qs(query) {
+        return document.querySelector(query);
     }
 })();
