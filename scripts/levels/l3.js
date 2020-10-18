@@ -13,13 +13,11 @@ const level3 = (p)=>{
     plats=[plat1, plat2, plat3, plat4];
 
     let backgroundImg;
-    let flag;
     p.preload = function()
     {
         //Function to load sprites, textures, etc
         player1.preloadSprites(p);
         backgroundImg = p.loadImage('../sprite_folders/backgrounds/meadow.jpg');
-        flag = p.loadImage('../sprite_folders/trophy/flag.png');
 
         for(let i = 0; i < 20; i++)
         {
@@ -34,7 +32,6 @@ const level3 = (p)=>{
         p.createCanvas(app.windowWidth, app.windowHeight);
         player1.loadAnimations(p);
         player1.setRespawnPoint(330, 468);
-        flag.resize(32, 32);
     }
 
     p.draw = function()

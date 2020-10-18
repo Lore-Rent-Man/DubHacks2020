@@ -23,12 +23,6 @@ main {
     margin: 0px;
 }
 
-#chat-room {
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
-}
-
 .hidden {
     display: none;
 }
