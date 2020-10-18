@@ -6,6 +6,7 @@ class player{
         const jump  = new BunnySprite(0.001, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
         const run   = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Run_6.png', 6);
         const death = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Death_8.png', 8);
+        //const doubleJump = new BunnySprite(0.2, '../sprite_folders/pink_monster/Double_Jump_Dust_5.png', 5); Implement dust particles if I have the time
 
         this.speed = 3;
         this.gravity = 0.5;
@@ -75,7 +76,6 @@ class player{
     draw(p)
     {
         if(!this.isDead){
-
             if (p.keyIsDown(p.LEFT_ARROW)) {
                 this.velocityX = -this.speed;
                 this.moveLeft = true;
@@ -95,18 +95,29 @@ class player{
     
             this.posX += this.velocityX;
             this.posY += this.velocityY;
-    
+            
             if(player1.posY > app.windowHeight - 32)
             {
                 player1.posY = app.windowHeight - 32;
                 this.isJumping = false;
                 this.numJumps = 2;
             }
+
+            if(player1.posX < 0)
+            {
+                player1.posX = 0;
+            }
+
+            if(player1.posX > app.windowWidth - 32)
+            {
+                player1.posX = app.windowWidth - 32;
+            }
+
             if(p.isJumping)
             {
                 this.drawAction(p, 2);
             }
-            else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW)))
+            else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW)))
             {
                 this.drawAction(p, 3);
             }
@@ -129,14 +140,14 @@ class player{
         }
     }
 
-    drawAction(p, action)
+    drawAction(p, action, x = this.posX, y = this.posY)
     {
         if(this.moveLeft){
-            this.animations[action].show(-this.posX - 32, this.posY, p, this.moveLeft);
+            this.animations[action].show(-x - 32, y, p, this.moveLeft);
         }
         else
         {
-            this.animations[action].show(this.posX, this.posY, p, this.moveLeft);
+            this.animations[action].show(x, y, p, this.moveLeft);
         }
         this.animations[action].animate();
     }
