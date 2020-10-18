@@ -6,10 +6,20 @@ const level2 = (p)=>{
 
     plat1 = new platform(650, 475, 100, 10);
     plat2 = new platform(550, 400, 10, 60);
-    plat3 = new platform(450, 300, 10, 60);
+    plat3 = new platform(450, 320, 10, 60);
     plat4 = new platform(350, 490, 10, 10);
+    plat5 = new platform(0, 420, 260, 10);
+    plat6 = new platform(175, 490, 10, 10);
+    plat7 = new platform(10, 490, 10, 10);
+    plat8 = new platform(30, 400, 120, 10);
+    plat9 = new platform(100, 250, 120, 10);
+    plat10 = new platform(300, 150, 400, 10);
+    fallingplatform = new platform(60, 300, 120, 10);
+    let fpVelocity = 0;
+    let fpGravity = 0;
 
-    plats=[plat1, plat2, plat3, plat4];
+    plats=[plat1, plat2, plat3, plat4, plat6, plat7, plat8, plat9, plat10, fallingplatform];
+    drawPlats = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, fallingplatform];
 
     let backgroundImg;
     let flag;
@@ -43,7 +53,7 @@ const level2 = (p)=>{
         p.fill(255, 204, 0);
         player1.draw(p, plats, false);
 
-        plats.forEach(function(arrayItem)
+        drawPlats.forEach(function(arrayItem)
         {
             arrayItem.draw(p);
         });
@@ -66,10 +76,30 @@ const level2 = (p)=>{
                 traps[0] = new spikes(547, -20, 0, 0, 0, p);
                 traps[0].rotate(p, p.PI);
                 traps[1] = new spikes(447, 520, 0, 0, 0, p);
+                fallingplatform = new platform(60, 300, 120, 10);
+                fpVelocity = 0;
+                fpGravity = 0;
+                drawPlats = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, fallingplatform];
+                plats = [plat1, plat2, plat3, plat4, plat6, plat7, plat8, plat9, plat10, fallingplatform];
             }
             arrayItem.draw(p, player1);
         });
+
+        fpVelocity += fpGravity;
+
+        plats[plats.length - 1].posY += fpVelocity;
+        drawPlats[drawPlats.length - 1].posY += fpVelocity;
+
+        if(checkCollide(p, plat5, player1))
+        {
+            drawPlats = plats;
+        }
+        if(checkCollide(p, fallingplatform, player1))
+        {
+            fpGravity = 0.1;
+        }
     }
+
     p.mousePressed = function()
     {
         //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
@@ -77,4 +107,8 @@ const level2 = (p)=>{
         //Example trigger for next level
         //app.nextLevel();
     }
+}
+
+function checkCollide(p, plat, player) {
+    return p.collideRectRect(player.posX, player.posY, 27, 32, plat.posX, plat.posY, plat.width, plat.height);
 }
