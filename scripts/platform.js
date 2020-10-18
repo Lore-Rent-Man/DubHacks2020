@@ -10,6 +10,9 @@ class platform {
     draw(p)
     {
       p.fill(this.color[0], this.color[1], this.color[2]);
-      p.rect(this.posX, this.posY, this.width, this.height);
+      if (this.width < 30)
+        p.rect(this.posX, this.posY, this.width, this.height, 2);
+      else
+        p.rect(this.posX, this.posY, this.width, this.height, 5);
     }
 }
