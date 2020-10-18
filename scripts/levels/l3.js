@@ -45,6 +45,7 @@ const level3 = (p)=>{
             $("myContainer").classList.add("hidden");
             //TODO: game win
             p.remove();
+            qs("body").style.margin = "200px";
             // qs("canvas").remove();
             $("chat-room").classList.remove("hidden");
         }
@@ -91,6 +92,7 @@ const level3 = (p)=>{
     {
         //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
         p.remove();
+        qs("body").style.margin = "200px";
         // qs("canvas").remove();
         $("chat-room").classList.remove("hidden");
     }
