@@ -56,7 +56,7 @@ class player{
 
     draw(p)
     {
-        
+
         if (p.keyIsDown(p.LEFT_ARROW)) {
             this.velocityX = -this.speed;
             this.moveLeft = true;
@@ -66,7 +66,7 @@ class player{
             this.moveLeft = false;
         }
         else if (p.keyIsDown(p.DOWN_ARROW)){
-            this.velocityY = 
+            this.velocityY = 7;
         }
         else
         {
