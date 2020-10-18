@@ -12,7 +12,7 @@ class spikes{
     }
 
     stopSpike(x, y){
-        return (this.p1.y < y && this.p2.y < y && this.p3.y < y) && 
+        return (this.p1.y < y && this.p2.y < y && this.p3.y < y) &&
         (this.p1.x < x && this.p2.x < x && this.p3.x < x);
     }
 

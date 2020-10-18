@@ -30,7 +30,7 @@ const level1 = (p)=>{
         firstSpike = new spikes(242, 350-18, 0, 0, 0, p);
         secondSpike = new spikes(300, 270, 0, 0, 0, p);
         secondSpike.rotate(p, p.PI);
-        thirdSpike = new spikes(400, 270-28, 0, 0, 0, p);
+        thirdSpike = new spikes(410, 270-28, 0, 0, 0, p);
         traps.push(firstSpike);
         traps.push(secondSpike);
         traps.push(thirdSpike);
