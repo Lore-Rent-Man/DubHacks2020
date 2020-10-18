@@ -1,6 +1,5 @@
-const level1 = (p)=>{
-    let backgroundImg;
-    let flag;
+const level2 = (p)=>{
+    let traps = [];
 
     player1 = new player(0, 500-18);
     plat1 = new platform(100, 430, 60, 10);
@@ -14,7 +13,8 @@ const level1 = (p)=>{
 
     plats=[plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8];
 
-    let traps = [];
+    let backgroundImg;
+    let flag;
     p.preload = function()
     {
         //Function to load sprites, textures, etc
