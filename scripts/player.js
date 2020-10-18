@@ -96,23 +96,29 @@ class player{
             this.posX += this.velocityX;
             this.posY += this.velocityY;
 
-            if(player1.posY > app.windowHeight - 32)
+            if (player1.posY > app.windowHeight - 32)
             {
                 player1.posY = app.windowHeight - 32;
                 this.isJumping = false;
                 this.numJumps = 2;
             }
+            if (player1.posX < -5) {
+                player1.posX  = -5;
+            }
+            if (player1.posX > app.windowWidth - 27) {
+                player1.posX  = app.windowWidth - 27;
+            }
 
             for (let i=0; i<plats.length; i++) {
                 if (this.checkCollide(p, plats[i])) {
                     //right
-                    if (this.posX < plats[i].posX + plats[i].width - 7 && this.posX > plats[i].posX + plats[i].width - 15) {
-                        this.posX = plats[i].posX + plats[i].width - 7;
+                    if (this.posX < plats[i].posX + plats[i].width - 5 && this.posX > plats[i].posX + plats[i].width - 15) {
+                        this.posX = plats[i].posX + plats[i].width - 5;
                     } else
                     //left
-                    if (this.posX + 25 > plats[i].posX && this.posX + 25 < plats[i].posX + 15) {
+                    if (this.posX + 25 > plats[i].posX && this.posX + 27 < plats[i].posX + 15) {
                         console.log(this.posX +" "+plats[i].posX);
-                        this.posX = plats[i].posX - 25;
+                        this.posX = plats[i].posX - 27;
                     } else
                     // buttom
                     if (this.posY < plats[i].posY + plats[i].height && this.posY > plats[i].posY + plats[i].height - 15) {
