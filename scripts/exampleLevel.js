@@ -1,39 +1,28 @@
 //Loading animations
-idle = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
-walk = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
-jump = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
-
+player1 = new player();
 
 const l1 = (p)=>{
+    let backgroundImg;
+    let velocity = 5;
     p.preload = function()
     {
-        idle.preload(p);
-        walk.preload(p);
-        jump.preload(p);
         //Function to load sprites, textures, etc
+        player1.preloadSprites(p);
+        backgroundImg = p.loadImage('../sprite_folders/backgrounds/meadow.jpg');
     }
 
     p.setup = function()
     {
         //Initialization of canvas and other code that needs to be run once at the beginning of the level
         p.createCanvas(app.windowWidth, app.windowHeight);
-        idle.loadAnimation(p);
-        walk.loadAnimation(p);
-        jump.loadAnimation(p);
+        player1.loadAnimations(p);
     }
 
     p.draw = function()
     {
         //Function that draws each frame
-        p.background(220);
-        idle.show(250, 250, p);
-        idle.animate();
-
-        walk.show(250, 300, p);
-        walk.animate();
-
-        jump.show(250, 350, p);
-        jump.animate();
+        p.image(backgroundImg, -300, -300);
+        player1.drawIdle(p);
     }
 
     p.mousePressed = function()
@@ -42,5 +31,21 @@ const l1 = (p)=>{
         //p.remove();
         //Example trigger for next level
         //app.nextLevel();
+    }
+
+    p.keyPressed = function()
+    {
+        console.log("key pressed: ", p.keyCode);
+        if (p.keyCode === p.UP_ARROW) {
+          player1.posY -= velocity;
+        } else if (p.keyCode === p.DOWN_ARROW) {
+          player1.posY += velocity;
+        } else if (p.keyCode === p.RIGHT_ARROW) {
+          player1.posX += velocity;
+        } else if (p.keyCode === p.LEFT_ARROW) {
+          player1.posX -= velocity;
+        } else {
+          console.log("wrong key");
+        }
     }
 }

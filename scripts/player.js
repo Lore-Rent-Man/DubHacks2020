@@ -1,52 +1,45 @@
-class Sprite{
-    constructor(speed, animation, spritesheet, spritedata)
-    {
-        this.spritelink = spritelink;
-        this.spritedata;
-        this.spritesheet;
-        this.animation = animation;
-        this.len = this.animation.len;
-        this.speed = speed;
-        this.index = 0;
-    }
-
-    show(p){
-        p.image(this.animation[this.index % this.len], 0, 0); 
-    }
-
-    animate(){
-        this.index += this.speed;
-    }
-}
-
 class player{
-    constructor(spritelink){
+    constructor(){
         this.posX = 0;
-        this.posY = 0;
+        this.posY = 450;
         this.velocityX = 0;
         this.velocityY = 0;
         this.gravity = 10;
         this.size = 0;
 
-        this.sprite;
+        const idle = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
+        const walk = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
+        const jump = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
+
+        this.animations = [];
+        this.animations.push(idle); //0 --- Idle
+        this.animations.push(walk); //1 --- Walk
+        this.animations.push(jump); //2 --- Jump
     }
 
-    loadSprite()
+    preloadSprites(p)
     {
-        
+        for(let i=0;i<this.animations.length;i++)
+        {
+            this.animations[i].preload(p);
+        }
     }
 
-    useSprite(sprite)
+    loadAnimations(p)
     {
-        this.sprite = sprite;
+        for(let i=0;i<this.animations.length;i++)
+        {
+            this.animations[i].loadAnimation(p);
+        }
     }
-
-    loadplayer(p5, speed)
+    
+    drawIdle(p)
     {
-        this.spritedata = p5.loadJSON('spriteness.json');
-        this.spritesheet = p5.loadImage(this.spritelink);
+        this.animations[1].show(this.posX, this.posY, p);
+        this.animations[1].animate();
     }
 
     jump(){
+
     }
 }
