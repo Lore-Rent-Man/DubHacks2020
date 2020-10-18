@@ -58,6 +58,7 @@
         pid = data.pid;
         username = data.username;
     }
+    
     function showMainPage() {
         $("sign-in-page").classList.add("hidden");
         $("main-page").classList.remove("hidden");
