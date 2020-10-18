@@ -21,7 +21,9 @@
 
   foreach ($results as $result) {
       echo "finding duplicates";
+      echo var_dump($result);
       $duplicate = $result["COUNT(*)"];
+      echo var_dump($duplicate);
       echo "num of duplicates found: " . $duplicate;
   }
 
