@@ -1,10 +1,11 @@
 class player{
     constructor(){
 
-        const idle = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
-        const walk = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
-        const jump = new BunnySprite(0.001, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
-        const run  = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Run_6.png', 6);
+        const idle  = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
+        const walk  = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
+        const jump  = new BunnySprite(0.001, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
+        const run   = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Run_6.png', 6);
+        const death = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Death_8.png', 8);
 
         this.speed = 3;
         this.gravity = 0.5;
@@ -17,15 +18,21 @@ class player{
         this.size = 0;
 
         this.animations = [];
-        this.animations.push(idle); //0 --- Idle
-        this.animations.push(walk); //1 --- Walk
-        this.animations.push(jump); //2 --- Jump
-        this.animations.push(run);  //3 --- Run
+        this.animations.push(idle);  //0 --- Idle
+        this.animations.push(walk);  //1 --- Walk
+        this.animations.push(jump);  //2 --- Jump
+        this.animations.push(run);   //3 --- Run
+        this.animations.push(death); //4 --- Death
 
         this.moveLeft = false;
         this.isJumping = false;
 
         this.isDead = false;
+        this.deadFrameCount = 0;
+
+        this.respawnX = 0;
+        this.respawnY = 0;
+        this.automaticRespawn = true;
     }
 
     preloadSprites(p)
@@ -51,12 +58,25 @@ class player{
                 this.isJumping = true;
                 this.numJumps--;
             }
+            if(p.keyCode == 82 && this.deadFrameCount >= 8/0.2)
+            {
+                this.isDead = false;
+                this.deadFrameCount = 0;
+                this.posX = this.respawnX;
+                this.posY = this.respawnY;
+            }
+            if(p.keyCode == 65)
+            {
+                this.isDead = true;
+            }
         }
     }
 
     draw(p, plats)
     {
-        for (let i=0; i<plats.length; i++)
+
+        if(!this.isDead){
+            for (let i=0; i<plats.length; i++)
             if (this.checkCollide(p, plats[i])) {
                 this.velocityX = 0;
             }
@@ -69,7 +89,7 @@ class player{
             this.moveLeft = false;
         }
         else if (p.keyIsDown(p.DOWN_ARROW)){
-            this.velocityY = 7;
+            this.velocityY = 8;
         }
         else
         {
@@ -112,10 +132,23 @@ class player{
         else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW)))
         {
             this.drawAction(p, 3);
+
+         } else
+            {
+                this.drawAction(p, 0);
+            }
         }
         else
         {
-            this.drawAction(p, 0);
+            if(this.deadFrameCount < 8/0.2)
+            {
+                this.drawAction(p, 4);
+                this.deadFrameCount++;
+            }
+            if(this.automaticRespawn && this.deadFrameCount >= 8/0.2)
+            {
+                this.respawn();
+            }
         }
     }
 
@@ -133,5 +166,19 @@ class player{
 
     checkCollide(p, plat) {
         return p.collideRectRect(this.posX, this.posY, 32, 32, plat.posX, plat.posY, plat.width, plat.height);
-      }
+    }
+
+    setRespawnPoint(x, y)
+    {
+        this.respawnX = x;
+        this.respawnY = y;
+    }
+
+    respawn()
+    {
+        this.isDead = false;
+        this.deadFrameCount = 0;
+        this.posX = this.respawnX;
+        this.posY = this.respawnY;
+    }
 }

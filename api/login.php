@@ -19,7 +19,7 @@
   }
 
   foreach ($rows as $row) {
-      $user_check = $row["COUNT(*)"];
+      $user_check = $row[0];
   }
 
   header("Content-Type: application/json");
@@ -30,7 +30,7 @@
                      "please try again"
       );
   } else {
-      $rows = $db->query("SELECT * FROM Users WHERE username = \"{$username_input}\";");
+      $rows = $db->query("SELECT * FROM Users WHERE username = '{$username_input}';");
       foreach ($rows as $row) {
           $pid = $row["pid"];
           $password = $row["password"]; 

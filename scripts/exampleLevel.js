@@ -1,8 +1,8 @@
 //Loading animations
 player1 = new player();
-let plat1 = new platform(100, 430, 60, 10);
-let plat2 = new platform(200, 350, 60, 10);
-let plats=[plat1, plat2];
+plat1 = new platform(100, 430, 60, 10);
+plat2 = new platform(200, 350, 60, 10);
+plats=[plat1, plat2];
 
 const l1 = (p)=>{
     let backgroundImg;
