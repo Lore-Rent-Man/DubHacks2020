@@ -13,21 +13,20 @@
 
   try {
     $results = $db->query("SELECT COUNT(*) FROM Users WHERE username = '{$username}';");
-    echo var_dump($results);
+    // echo var_dump($results);
   }
   catch (PDOException $ex) {
     db_error_message("Can not query the database.", $ex);
   }
 
   foreach ($results as $result) {
-      echo "finding duplicates";
-      echo var_dump($result);
-      $duplicate = $result["COUNT(*)"];
-      echo var_dump($duplicate);
-      echo "num of duplicates found: " . $duplicate;
+    //   echo "finding duplicates";
+    //   echo var_dump($result);
+      $duplicate = $result[0];
+    //   echo var_dump($duplicate);
+    //   echo "num of duplicates found: " . $duplicate;
   }
 
-  echo $duplicate;
   if ($duplicate != 0) {
       header("Content-Type: application/json");
       $result = Array(
