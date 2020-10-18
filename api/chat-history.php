@@ -14,8 +14,9 @@ while (true) {
     $curr_chat_list = array();
     foreach ($rows as $row) {
         echo var_dump($row);
-        array_push($curr_char_list, $row["cid"]);
+        array_push($curr_chat_list, $row["cid"]);
         // echo $row["tid"];
+        echo var_dump($curr_chat_list);
     }
 break;
 
