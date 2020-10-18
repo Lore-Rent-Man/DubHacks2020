@@ -30,9 +30,9 @@ while (true) {
         $output = array();
         foreach ($rows as $row) {
             $chat_info = array(
-                cid => $row["cid"],
-                message => $row["message"],
-                username => $row["username"]
+                'cid' => $row["cid"],
+                'message' => $row["message"],
+                'username' => $row["username"]
             );
             array_push($output, $chat_info);
         }
