@@ -47,7 +47,6 @@ const level3 = (p)=>{
         }
         //Function that draws each frame
         p.image(backgroundImg, -300, -300);
-        p.image(flag, 685, 10 + p.sin(p.frameCount/60) * 5);
         p.fill(255, 204, 0);
         player1.draw(p, plats, true);
 
