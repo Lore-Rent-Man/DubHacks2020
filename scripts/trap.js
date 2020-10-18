@@ -1,8 +1,10 @@
 class trap {
-    constructor(sprite, posX, posY) {
+    constructor(sprite, posX, posY, velocity, gravity) {
         this.size = 32;
         this.x = posX;
         this.y = posY;
+        this.velocity = velocity;
+        this.gravity = gravity;
         this.sprite = sprite;
     }
 
@@ -18,8 +20,8 @@ class trap {
     collision(p, player)
     {
         return p.collidePointTriangle(
-            player1.posX+32,
-            player1.posY+16,
+            player.posX+32,
+            player.posY+16,
             this.x,
             this.y+40,
             this.x+20,
@@ -27,8 +29,8 @@ class trap {
             this.x+40,
             this.y+40
         ) || p.collidePointTriangle(
-            player1.posX+16,
-            player1.posY+32,
+            player.posX+16,
+            player.posY+32,
             this.x,
             this.y+40,
             this.x+20,
