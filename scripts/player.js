@@ -15,6 +15,8 @@ class player{
         this.animations.push(idle); //0 --- Idle
         this.animations.push(walk); //1 --- Walk
         this.animations.push(jump); //2 --- Jump
+
+        this.moveLeft = false;
     }
 
     preloadSprites(p)
@@ -32,11 +34,43 @@ class player{
             this.animations[i].loadAnimation(p);
         }
     }
-    
-    drawIdle(p)
+
+    draw(p)
     {
-        this.animations[1].show(this.posX, this.posY, p);
-        this.animations[1].animate();
+        if (p.keyIsDown(p.LEFT_ARROW)) {
+            this.posX -= 1;
+            this.moveLeft = true;
+        }
+        if (p.keyIsDown(p.RIGHT_ARROW)) {
+            this.posX += 1;
+            this.moveLeft = false;
+        }
+        if (p.keyIsDown(p.UP_ARROW)) {
+            this.posY -= 1;
+        }
+        if (p.keyIsDown(p.DOWN_ARROW)) {
+            this.posY += 1;
+        }
+        if(p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW))
+        {
+            this.drawAction(p, 1);
+        }
+        else
+        {
+            this.drawAction(p, 0);
+        }
+    }
+
+    drawAction(p, action)
+    {
+        if(this.moveLeft){
+            this.animations[action].show(-this.posX - 32, this.posY, p, this.moveLeft);
+        }
+        else
+        {
+            this.animations[action].show(this.posX, this.posY, p, this.moveLeft);
+        }
+        this.animations[action].animate();
     }
 
     jump(){

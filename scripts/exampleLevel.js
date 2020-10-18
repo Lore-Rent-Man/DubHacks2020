@@ -22,7 +22,11 @@ const l1 = (p)=>{
     {
         //Function that draws each frame
         p.image(backgroundImg, -300, -300);
-        player1.drawIdle(p);
+        if(player1.posY > app.windowHeight - 32)
+        {
+            player1.posY = app.windowHeight - 32;
+        }
+        player1.draw(p);
     }
 
     p.mousePressed = function()
@@ -35,17 +39,6 @@ const l1 = (p)=>{
 
     p.keyPressed = function()
     {
-        console.log("key pressed: ", p.keyCode);
-        if (p.keyCode === p.UP_ARROW) {
-          player1.posY -= velocity;
-        } else if (p.keyCode === p.DOWN_ARROW) {
-          player1.posY += velocity;
-        } else if (p.keyCode === p.RIGHT_ARROW) {
-          player1.posX += velocity;
-        } else if (p.keyCode === p.LEFT_ARROW) {
-          player1.posX -= velocity;
-        } else {
-          console.log("wrong key");
-        }
+        
     }
 }

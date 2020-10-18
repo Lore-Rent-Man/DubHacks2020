@@ -83,16 +83,24 @@ class BunnySprite{
         }
     }
 
-    show(posX, posY, p)
+    show(posX, posY, p, moveLeft)
     {
         let index = p.floor(this.index) % this.frameCount;
+        p.push();
+        if(moveLeft){
+            p.scale(-1.0, 1.0);
+        }
         p.image(this.animation[index], posX, posY);
+        p.pop();
     }
 
     showFrames(posX, posY, offset, frameCount, p)
     {
         let index = offset + p.floor(this.index) % frameCount;
+        p.push();
+        p.scale(-1.0, 1.0);
         p.image(this.animation[index], posX, posY);
+        p.pop();
     }
 
     animate()
