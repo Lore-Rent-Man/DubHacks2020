@@ -22,12 +22,23 @@ const l1 = (p)=>{
     {
         //Function that draws each frame
         p.image(backgroundImg, -300, -300);
-        player1.drawIdle(p);
-        player.walk();
+        if(player1.posY > app.windowHeight - 32)
+        {
+            player1.posY = app.windowHeight - 32;
+        }
+        player1.draw(p);
     }
 
     p.mousePressed = function()
     {
+        //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
+        //p.remove();
+        //Example trigger for next level
+        //app.nextLevel();
+    }
 
+    p.keyPressed = function()
+    {
+        
     }
 }

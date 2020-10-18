@@ -25,7 +25,7 @@ class Application{
   };
 
   nextLevel()
-  {
+  { 
     this.levelCounter++;
     if(this.levelCounter <= this.totalLevels)
     {
