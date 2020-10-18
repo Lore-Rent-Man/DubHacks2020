@@ -1,6 +1,10 @@
 <?php
   ## login.php
   ## processes log in data from a client
+  ##
+  ## Parameters: $_POST["username"], $_POST["password"]
+  ## Returns a JSON object with status, message (if status == 'denied'),
+  ## pid (if status == 'success'), and username (if status == 'success')
 
   include 'common.php';
 

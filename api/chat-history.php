@@ -1,4 +1,11 @@
 <?php
+## chat-history.php
+## returns the latest 10 chat messages once new chat message has been posted
+## will keep the request pending until a new message is found
+##
+## Params: $_POST["cids"] - array of cid
+## Return: an array of JSON objects, listed in reverse order
+
 
 include 'common.php';
 
@@ -55,4 +62,5 @@ function db_query($db) {
     }
     return $rows;
 }
+
 ?>
