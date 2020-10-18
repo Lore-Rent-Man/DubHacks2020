@@ -45,7 +45,7 @@
         params.append("message", $("chat-box").value);
         fetch("../api/send-message.php", {method: "POST", body: params})
             .then(() => {
-                $("chat-box").value == "";
+                $("chat-box").value = "";
             })
             .catch(handleError);
     }
