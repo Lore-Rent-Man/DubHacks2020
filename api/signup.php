@@ -22,6 +22,7 @@
       $duplicate = $result["COUNT(*)"];
   }
 
+  echo $duplicate
   if ($duplicate != 0) {
       header("Content-Type: application/json");
       $result = Array(
