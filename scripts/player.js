@@ -1,8 +1,14 @@
 class player{
     constructor(){
 
+        const idle = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
+        const walk = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
+        const jump = new BunnySprite(0.001, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
+        const run  = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Run_6.png', 6);
+
         this.speed = 3;
-        this.gravity = 2;
+        this.gravity = 0.5;
+        this.numJumps = 2;
 
         this.posX = 0;
         this.posY = 0;
@@ -10,19 +16,16 @@ class player{
         this.velocityY = 0;
         this.size = 0;
 
-        const idle = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
-        const walk = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Walk_6.png', 6);
-        const jump = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Jump_8.png', 8);
-
         this.animations = [];
         this.animations.push(idle); //0 --- Idle
         this.animations.push(walk); //1 --- Walk
         this.animations.push(jump); //2 --- Jump
+        this.animations.push(run);  //3 --- Run
 
         this.moveLeft = false;
-        
-        this.numJumps = 2;
         this.isJumping = false;
+
+        this.isDead = false;
     }
 
     preloadSprites(p)
@@ -39,10 +42,21 @@ class player{
         {
             this.animations[i].loadAnimation(p);
         }
+
+        p.keyPressed = () =>
+        {
+            if(p.keyCode == p.UP_ARROW && ((!this.isJumping) || this.numJumps != 0))
+            {
+                this.velocityY = -8;
+                this.isJumping = true;
+                this.numJumps--;
+            }
+        }
     }
 
     draw(p)
     {
+        
         if (p.keyIsDown(p.LEFT_ARROW)) {
             this.velocityX = -this.speed;
             this.moveLeft = true;
@@ -51,16 +65,12 @@ class player{
             this.velocityX = this.speed;
             this.moveLeft = false;
         }
+        else if (p.keyIsDown(p.DOWN_ARROW)){
+            this.velocityY = 
+        }
         else
         {
             this.velocityX = 0;
-        }
-
-        if(p.keyIsDown(p.UP_ARROW) && ((!this.isJumping) || this.numJumps != 0))
-        {
-            this.velocityY = -30;
-            this.isJumping = true;
-            this.numJumps--;
         }
 
         this.velocityY += this.gravity;
@@ -74,10 +84,13 @@ class player{
             this.isJumping = false;
             this.numJumps = 2;
         }
-        
-        if(p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW))
+        if(p.isJumping)
         {
-            this.drawAction(p, 1);
+            this.drawAction(p, 2);
+        }
+        else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW)))
+        {
+            this.drawAction(p, 3);
         }
         else
         {
