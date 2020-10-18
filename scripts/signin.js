@@ -61,7 +61,7 @@
 
     function showMainPage() {
         $("sign-in-page").classList.add("hidden");
-        $("chat-room").classList.remove("hidden");
+        $("myContainer").classList.remove("hidden");
         qs("canvas").classList.remove("hidden");
     }
 
