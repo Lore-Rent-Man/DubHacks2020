@@ -22,12 +22,10 @@ class spikes{
         p.beginShape();
 
         this.velocityY += this.gravity;
-        if(this.stopSpike(500, 500))
-        {
-            this.p1.y += this.velocityY;
-            this.p2.y += this.velocityY;
-            this.p3.y += this.velocityY;
-        }
+
+        this.p1.y += this.velocityY;
+        this.p2.y += this.velocityY;
+        this.p3.y += this.velocityY;
 
         p.vertex(this.p1.x, this.p1.y);
         p.vertex(this.p2.x, this.p2.y);
@@ -43,22 +41,27 @@ class spikes{
 
     collision(p, player){
         return p.collidePointTriangleVector(
-            p.createVector(player.posX+32, player.posY+16),
+            p.createVector(player.posX+32, player.posY+32),
             this.p1,
             this.p2,
             this.p3
         ) || p.collidePointTriangleVector(
-            p.createVector(player.posX+5, player.posY+32),
+            p.createVector(player.posX, player.posY),
             this.p1,
             this.p2,
             this.p3
         ) || p.collidePointTriangleVector(
-            p.createVector(player.posX+16, player.posY+32),
+            p.createVector(player.posX+32, player.posY),
             this.p1,
             this.p2,
             this.p3
         ) || p.collidePointTriangleVector(
             p.createVector(player.posX, player.posY+16),
+            this.p1,
+            this.p2,
+            this.p3
+        ) || p.collidePointTriangleVector(
+            p.createVector(player.posX+16, player.posY+5),
             this.p1,
             this.p2,
             this.p3);

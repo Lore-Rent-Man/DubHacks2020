@@ -75,7 +75,7 @@ class player{
         }
     }
 
-    draw(p, plats)
+    draw(p, plats, hasGround)
     {
         if(!this.isDead){
             if (p.keyIsDown(p.LEFT_ARROW)) {
@@ -127,12 +127,23 @@ class player{
             this.posX += this.velocityX;
             this.posY += this.velocityY;
 
-            if (player1.posY > app.windowHeight - 32)
+            if(hasGround)
             {
-                player1.posY = app.windowHeight - 32;
-                this.isJumping = false;
-                this.numJumps = 2;
+                if (player1.posY > app.windowHeight - 32)
+                {
+                    player1.posY = app.windowHeight - 32;
+                    this.isJumping = false;
+                    this.numJumps = 2;
+                }
             }
+            else
+            {
+                if (player1.posY > app.windowHeight)
+                {
+                    this.isDead = true;
+                }
+            }
+
             if (player1.posX < -5) {
                 player1.posX  = -5;
             }

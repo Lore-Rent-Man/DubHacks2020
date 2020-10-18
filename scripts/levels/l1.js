@@ -60,7 +60,8 @@ const level1 = (p)=>{
         p.image(backgroundImg, -300, -300);
         p.image(flag, 685, 10 + p.sin(p.frameCount/60) * 5);
         p.fill(255, 204, 0);
-        player1.draw(p, plats);
+
+        player1.draw(p, plats, true);
 
         plats.forEach(function(arrayItem)
         {
