@@ -20,7 +20,9 @@
   }
 
   foreach ($results as $result) {
+      echo "finding duplicates";
       $duplicate = $result["COUNT(*)"];
+      echo "num of duplicates found: " . $duplicate;
   }
 
   echo $duplicate;
