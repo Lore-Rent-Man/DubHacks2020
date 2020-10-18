@@ -106,14 +106,11 @@ const level2 = (p)=>{
         }
     }
 
-    p.keyPressed = () => 
+    p.mousePressed = function()
     {
-        if (p.keyCode == 87) {
-            //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
-            p.remove();
-            //Example trigger for next level
-            app.nextLevel();
-        }
+        p.remove();
+        //Example trigger for next level
+        app.nextLevel();
     }
 }
 
