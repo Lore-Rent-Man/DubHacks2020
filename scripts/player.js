@@ -29,6 +29,10 @@ class player{
 
         this.isDead = false;
         this.deadFrameCount = 0;
+
+        this.respawnX = 0;
+        this.respawnY = 0;
+        this.automaticRespawn = true;
     }
 
     preloadSprites(p)
@@ -58,6 +62,8 @@ class player{
             {
                 this.isDead = false;
                 this.deadFrameCount = 0;
+                this.posX = this.respawnX;
+                this.posY = this.respawnY;
             }
             if(p.keyCode == 65)
             {
@@ -100,7 +106,7 @@ class player{
             {
                 this.drawAction(p, 2);
             }
-            else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW)))
+            else if((p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW)))
             {
                 this.drawAction(p, 3);
             }
@@ -116,6 +122,10 @@ class player{
                 this.drawAction(p, 4);   
                 this.deadFrameCount++;
             }
+            if(this.automaticRespawn && this.deadFrameCount >= 8/0.2)
+            {
+                this.respawn();
+            }
         }
     }
 
@@ -129,5 +139,19 @@ class player{
             this.animations[action].show(this.posX, this.posY, p, this.moveLeft);
         }
         this.animations[action].animate();
+    }
+
+    setRespawnPoint(x, y)
+    {
+        this.respawnX = x;
+        this.respawnY = y;
+    }
+
+    respawn()
+    {
+        this.isDead = false;
+        this.deadFrameCount = 0;
+        this.posX = this.respawnX;
+        this.posY = this.respawnY;
     }
 }

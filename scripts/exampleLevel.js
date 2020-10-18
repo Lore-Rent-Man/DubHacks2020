@@ -16,6 +16,7 @@ const l1 = (p)=>{
         //Initialization of canvas and other code that needs to be run once at the beginning of the level
         p.createCanvas(app.windowWidth, app.windowHeight);
         player1.loadAnimations(p);
+        player1.setRespawnPoint(0, app.windowHeight - 32);
     }
 
     p.draw = function()
