@@ -41,7 +41,7 @@ const level3 = (p)=>{
     p.draw = function()
     {
         count++;
-        if (count >= 300) {
+        if (count >= 900) {
             $("myContainer").classList.add("hidden");
             //TODO: game win
             p.remove();

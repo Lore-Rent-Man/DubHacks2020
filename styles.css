@@ -21,6 +21,12 @@ body {
     font-size: 30px;
 }
 
+#chat-room {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
 .hidden {
     display: none;
 }
