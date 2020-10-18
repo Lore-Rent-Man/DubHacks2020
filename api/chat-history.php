@@ -48,7 +48,7 @@ while (true) {
 // returns the last 10 rows from the database
 function db_query($db) {
     try {
-        $rows = $db->query("SELECT  TOP 10 cid FROM Chats ORDER BY cid DESC;");
+        $rows = $db->query("SELECT  TOP 10 * FROM Chats ORDER BY cid DESC;");
     }
     catch (PDOException $ex) {
         db_error_message("Can not query the database.", $ex);
