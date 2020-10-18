@@ -13,7 +13,7 @@
 
   try {
     $results = $db->query("SELECT COUNT(*) FROM Users WHERE username = '{$username}';");
-    echo $results;
+    echo var_dump($results);
   }
   catch (PDOException $ex) {
     db_error_message("Can not query the database.", $ex);
