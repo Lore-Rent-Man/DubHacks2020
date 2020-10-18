@@ -1,5 +1,43 @@
+body {
+    text-align: center;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
 .hidden {
     display: none;
+}
+
+p {
+    font-size: 50px;
+}
+
+button {
+    margin: 20px;
+    background-color: #e7e7e7;
+    padding: 10px 30px;
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+  }
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+input {
+    font-size: 25px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin: 8px 0;
+}
+
+#username-input, #password-input {
+    margin: 15px;
 }
 
 #chat-box {
