@@ -25,7 +25,7 @@ class trap {
             this.x,
             this.y+32,
             this.x+16,
-            this.y, 
+            this.y,
             this.x+32,
             this.y+32
         ) || p.collidePointTriangle(
@@ -34,7 +34,7 @@ class trap {
             this.x,
             this.y+32,
             this.x+16,
-            this.y, 
+            this.y,
             this.x+32,
             this.y+32
         );
