@@ -73,7 +73,7 @@
     }
 
     function handleError(error) {
-        alert(error);
+        console.log(error);
     }
 
     
