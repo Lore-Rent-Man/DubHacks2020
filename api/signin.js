@@ -60,7 +60,7 @@
 
     function showMainPage() {
         $("sign-in-page").classList.add("hidden");
-        $("main-page").classList.remove("hidden");
+        $("chat-room").classList.remove("hidden");
     }
 
     // check whether the response from a fetch request is valid
