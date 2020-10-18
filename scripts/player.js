@@ -105,9 +105,9 @@ class player{
                         this.posX = plats[i].posX + plats[i].width - 7;
                     } else
                     //left
-                    if (this.posX + 25 > plats[i].posX && this.posX + 25 < plats[i].posX) {
+                    if (this.posX + 20 > plats[i].posX && this.posX + 20 < plats[i].posX + 5) {
                         console.log(this.posX +" "+plats[i].posX);
-                        this.posX = plats[i].posX - 25;
+                        this.posX = plats[i].posX - 20;
                     } else
                     // buttom
                     if (this.posY < plats[i].posY + plats[i].height && this.posY > plats[i].posY + plats[i].height - 15) {

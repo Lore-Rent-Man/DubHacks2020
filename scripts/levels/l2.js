@@ -86,7 +86,7 @@ const level2 = (p)=>{
         });
 
         fpVelocity += fpGravity;
-        
+
         plats[plats.length - 1].posY += fpVelocity;
         drawPlats[drawPlats.length - 1].posY += fpVelocity;
 
@@ -106,7 +106,7 @@ const level2 = (p)=>{
         //p.remove();
         //Example trigger for next level
         //app.nextLevel();
-    }   
+    }
 }
 
 function checkCollide(p, plat, player) {
