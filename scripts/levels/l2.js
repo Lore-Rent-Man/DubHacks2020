@@ -26,7 +26,7 @@ const level2 = (p)=>{
         //Initialization of canvas and other code that needs to be run once at the beginning of the level
         p.createCanvas(app.windowWidth, app.windowHeight);
         player1.loadAnimations(p);
-        player1.setRespawnPoint(750, 450);
+        player1.setRespawnPoint(750, 400);
         flag.resize(32, 32);
 
 
