@@ -1,17 +1,15 @@
 <?php
   ## common.php
-  ## Configs the php data object for mysql database;
-  ## Helper functions for the potluck web service.
+  ## Configs the php data object for sql database;
 
   header("Access-Control-Allow-Origin: *");
 
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
-  #Flag to set debugging on or off - we want to set this to FALSE for
-  #our "production" system to avoid having a user see too much about our
-  #implementation, but when we are having trouble, try setting this to TRUE
+  #Flag to set debugging on or off
   $debug = TRUE;
+
 //   $host = 'lansong.database.windows.net';
 //   $port = '1433';
 //   $user = 'lansong@lansong';
@@ -26,15 +24,10 @@
 //   # Make a data source string that will be used in creating the PDO object
 //   $ds = "mysql:host={$host}:{$port};dbname={$dbname};charset=utf8";
 
-
-  #--------------------------------------------------------------------------------------------------------------------------------------------------
   
 
 
-  # Function to print an error message for an invalid request to our
-  # webservice. Note that this is a different error type than that of catching
-  # an error for a PDOException, which is unique to an internal database error (not an
-  # invalid request sent from a client).
+  # Function to print an error message for an invalid request
   #
   # param $msg The 400 error message to print as plain text
   function error_message($msg) {
@@ -67,8 +60,6 @@
 
     header("HTTP/1.1 503 Internal Database Error");
     header("Content-Type: text/plain");
-    # note that we don't want a user to see internal errors for our db
-    # (debug should be removed or false in a published website)
 
     if ($debug) {
       $msg .= "\n Error details: $ex \n";
