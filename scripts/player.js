@@ -93,39 +93,36 @@ class player{
                 this.velocityX = 0;
             }
 
-            for (let i=0; i<plats.length; i++) {
-                if (this.checkCollide(p, plats[i])) {
-                    if (this.posY <= plats[i].posY + plats[i].height + 2 && this.posY > plats[i].posY) 
-                    {
-                        //bottom
-                        if(this.velocityY < 0)
-                        {
-                            this.velocityY = 0;
-                        }
-                        this.posY = plats[i].posY + plats[i].height - 3;
-                    } 
-                    else if (this.posY + 32 >= plats[i].posY + plats[i].height)
-                    {
-                        this.velocityX = 0;
-                    }
-                    else if (this.posY + 32 >= plats[i].posY) 
-                    {
-                        if(!p.keyIsDown(p.UP_ARROW))
-                        {
-                            this.posY = plats[i].posY - 32;
-                            this.isJumping = false;
-                            this.velocityY = 0;
-                            this.numJumps = 2;
-                            this.onPlatform = true;
-                        }
-                    }
-                }
-            }
-
             this.velocityY += this.gravity;
 
             this.posX += this.velocityX;
             this.posY += this.velocityY;
+
+            for (let i=0; i<plats.length; i++) {
+                if (this.checkCollide(p, plats[i])) {
+                    //right
+                    if (this.posX < plats[i].posX + plats[i].width - 7 && this.posX > plats[i].posX + plats[i].width - 15) {
+                        this.posX = plats[i].posX + plats[i].width - 7;
+                    } else
+                    //left
+                    if (this.posX + 25 > plats[i].posX && this.posX + 25 < plats[i].posX + 15) {
+                        console.log(this.posX +" "+plats[i].posX);
+                        this.posX = plats[i].posX - 25;
+                    } else
+                    // buttom
+                    if (this.posY < plats[i].posY + plats[i].height && this.posY > plats[i].posY + plats[i].height - 15) {
+                        this.posY = plats[i].posY + plats[i].height;
+                    } else
+                    // top
+                    if (this.posY + 32 > plats[i].posY && this.posY + 32 < plats[i].posY + 15) {
+                        this.posY = plats[i].posY - 32;
+                        this.isJumping = false;
+                        this.numJumps = 2;
+                        this.velocityY = 0;
+                    }
+                }
+            }
+
 
             if (player1.posY > app.windowHeight - 32)
             {
