@@ -27,11 +27,13 @@ class Sprite{
             {
                 let pos = frames[i];
                 let img = this.spritesheet.get(pos.x, pos.y, pos.w, pos.h);
+                img.resize(32, 32);
                 this.animation.push(img);
             }
         }
         else
         {
+            this.spritesheet.resize(32, 32);
             this.animation.push(this.spritesheet);
         }
     }
@@ -77,7 +79,7 @@ class BunnySprite{
         let posX = 0;
         for(let i=0;i<this.frameCount;i++)
         {
-            let img = this.spritesheet.get(posX, 0, 32, 33);
+            let img = this.spritesheet.get(posX, 0, 32, 32);
             this.animation.push(img);
             posX += 32;
         }

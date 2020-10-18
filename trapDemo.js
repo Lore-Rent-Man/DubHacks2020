@@ -89,7 +89,7 @@ class Trap {
     this.y = random(10, height - 10);
   }
 
-  showSelf() {
+  draw() {
     stroke(240, 100, 100);
     noFill();
     circle(this.x, this.y, this.size);
