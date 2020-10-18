@@ -1,5 +1,5 @@
 //Loading animations
-player1 = new player(0, 0);
+player1 = new player(0, 500-18);
 plat1 = new platform(100, 430, 60, 10);
 plat2 = new platform(200, 350, 60, 10);
 plat3 = new platform(380, 350, 60, 10);
@@ -7,7 +7,7 @@ plat4 = new platform(0, 260, 440, 10);
 plat5 = new platform(550, 150, 10, 500);
 plat6 = new platform(0, 175, 60, 10);
 plat7 = new platform(100, 100, 300, 10);
-plat8 = new platform(650, 50, 100, 450, 50, 50, 50);
+plat8 = new platform(650, 50, 100, 450, [50, 50, 50]);
 
 plats=[plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8];
 
@@ -15,11 +15,13 @@ let traps = [];
 
 const level1 = (p)=>{
     let backgroundImg;
+    let flag;
     p.preload = function()
     {
         //Function to load sprites, textures, etc
         player1.preloadSprites(p);
         backgroundImg = p.loadImage('../sprite_folders/backgrounds/level1.jpg');
+        flag = p.loadImage('../sprite_folders/trophy/flag.png');
 
         //static spikes
         for(let i=0;i<22;i++)
@@ -50,12 +52,14 @@ const level1 = (p)=>{
         player1.loadAnimations(p);
         player1.setRespawnPoint(0, app.windowHeight - 32);
         backgroundImg.resize(1500, 1000);
+        flag.resize(32, 32);
     }
 
     p.draw = function()
     {
         //Function that draws each frame
         p.image(backgroundImg, -300, -300);
+        p.image(flag, 685, 10 + p.sin(p.frameCount/60) * 5);
         p.fill(255, 204, 0);
         player1.draw(p, plats);
 
@@ -68,6 +72,12 @@ const level1 = (p)=>{
         {
             arrayItem.draw(p, player1);
         });
+
+        if(player1.posX + 32 >= 685)
+        {
+            p.remove();
+            app.nextLevel();
+        }
     }
     p.mousePressed = function()
     {

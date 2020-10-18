@@ -6,3 +6,12 @@
     height: 200px;
     width: 300px;
 }
+
+#chat-history {
+    height: 600px;
+    width: 800px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    background-color: aquamarine;
+}

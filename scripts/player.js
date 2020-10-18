@@ -78,9 +78,6 @@ class player{
     draw(p, plats)
     {
         if(!this.isDead){
-            for (let i=0; i<plats.length; i++)
-                if (this.checkCollide(p, plats[i]))
-                this.velocityX = 0;
             if (p.keyIsDown(p.LEFT_ARROW)) {
                 this.velocityX = -this.speed;
                 this.moveLeft = true;
@@ -130,11 +127,17 @@ class player{
             this.posX += this.velocityX;
             this.posY += this.velocityY;
 
-            if(player1.posY > app.windowHeight - 32)
+            if (player1.posY > app.windowHeight - 32)
             {
                 player1.posY = app.windowHeight - 32;
                 this.isJumping = false;
                 this.numJumps = 2;
+            }
+            if (player1.posX < -5) {
+                player1.posX  = -5;
+            }
+            if (player1.posX > app.windowWidth - 27) {
+                player1.posX  = app.windowWidth - 27;
             }
 
             if(p.isJumping)

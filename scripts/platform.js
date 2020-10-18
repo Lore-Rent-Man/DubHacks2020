@@ -1,17 +1,15 @@
 class platform {
-    constructor (posX, posY, width, height, r = 255, g = 204, b = 0){
+    constructor (posX, posY, width, height, color = [220, 204, 0]){
       this.posX = posX;
       this.posY = posY;
       this.width = width;
       this.height = height;
-      this.r = r;
-      this.b = b;
-      this.g = g;
+      this.color = color;
     }
 
     draw(p)
     {
-      p.fill(this.r, this.g, this.b);
+      p.fill(this.color[0], this.color[1], this.color[2]);
       p.rect(this.posX, this.posY, this.width, this.height);
     }
 }
