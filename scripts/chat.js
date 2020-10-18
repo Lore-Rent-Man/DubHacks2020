@@ -43,7 +43,11 @@
         let params = new FormData();
         params.append("username", username);
         params.append("message", $("chat-box").value);
-        fetch("../api/send-message.php", {method: "POST", body: params}).catch(handleError);
+        fetch("../api/send-message.php", {method: "POST", body: params})
+            .then(() => {
+                $("chat-box").value = "";
+            })
+            .catch(handleError);
     }
 
     function checkStatus(response) {

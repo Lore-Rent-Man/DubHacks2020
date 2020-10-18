@@ -13,15 +13,13 @@ const level3 = (p)=>{
     plats=[plat1, plat2, plat3, plat4];
 
     let backgroundImg;
-    let flag;
     p.preload = function()
     {
         //Function to load sprites, textures, etc
         player1.preloadSprites(p);
         backgroundImg = p.loadImage('../sprite_folders/backgrounds/meadow.jpg');
-        flag = p.loadImage('../sprite_folders/trophy/flag.png');
 
-        for(let i = 0; i < 20; i++)
+        for(let i = 0; i < 15; i++)
         {
             traps[i] = new circleTrap(Math.floor(Math.random() * app.windowWidth),
             Math.floor(Math.random() * app.windowHeight), 10);
@@ -34,8 +32,6 @@ const level3 = (p)=>{
         p.createCanvas(app.windowWidth, app.windowHeight);
         player1.loadAnimations(p);
         player1.setRespawnPoint(330, 468);
-        flag.resize(32, 32);
-
     }
 
     p.draw = function()
@@ -50,8 +46,7 @@ const level3 = (p)=>{
             $("chat-room").classList.remove("hidden");
         }
         //Function that draws each frame
-        p.image(backgroundImg, 0, 0);
-        p.image(flag, 685, 10 + p.sin(p.frameCount/60) * 5);
+        p.image(backgroundImg, -300, -300);
         p.fill(255, 204, 0);
         player1.draw(p, plats, true);
 
@@ -88,12 +83,12 @@ const level3 = (p)=>{
             }
         });
     }
+
     p.mousePressed = function()
     {
-        //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
-        p.remove();
-        qs("body").style.margin = "200px";
-        // qs("canvas").remove();
-        $("chat-room").classList.remove("hidden");
+        // //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
+        // p.remove();
+        // qs("body").style.margin = "200px";
+        // $("chat-room").classList.remove("hidden");
     }
 }

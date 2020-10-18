@@ -79,11 +79,11 @@ const level1 = (p)=>{
             app.nextLevel();
         }
     }
+
     p.mousePressed = function()
     {
-        // ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
-        p.remove();
-        // Example trigger for next level
-        app.nextLevel();
+        // p.remove();
+        // //Example trigger for next level
+        // app.nextLevel();
     }
 }
