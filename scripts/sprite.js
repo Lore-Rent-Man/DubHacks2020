@@ -77,7 +77,7 @@ class BunnySprite{
         let posX = 0;
         for(let i=0;i<this.frameCount;i++)
         {
-            let img = this.spritesheet.get(posX, 0, 32, 32);
+            let img = this.spritesheet.get(posX, 0, 32, 33);
             this.animation.push(img);
             posX += 32;
         }
