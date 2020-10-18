@@ -92,6 +92,7 @@ const level3 = (p)=>{
         //ALWAYS CALL THIS PIECE OF CODE AFTER CREATING A NEW LEVEL
         p.remove();
         //Example trigger for next level
-        app.nextLevel();
+        qs("canvas").remove();
+        $("chat-room").classList.remove("hidden");
     }
 }
