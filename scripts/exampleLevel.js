@@ -37,10 +37,10 @@ const l1 = (p)=>{
         p.rect(100, 430, 60, 10, 5);
         p.rect(200, 350, 60, 10, 5);
         player1.draw(p, plats);
-        // for(let i=0;i<10;i++)
-        // {
-        //     traps[i].draw(p, player1);
-        // }
+        for(let i=0;i<10;i++)
+        {
+            traps[i].draw(p, player1);
+        }
     }
     p.mousePressed = function()
     {
