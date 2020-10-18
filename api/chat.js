@@ -22,7 +22,7 @@
             .then(checkStatus)
             .then(resp => resp.json())
             .then(showChats)
-            .catch(handleError);
+            .catch(resubscribe);
     }
 
     function showChats(data) {
@@ -55,5 +55,10 @@
 
     function handleError(error) {
         console.log(error);
+    }
+
+    function resubscribe(error) {
+        console.log(error);
+        updateChat();
     }
 })();
