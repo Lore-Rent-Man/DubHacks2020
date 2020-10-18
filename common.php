@@ -12,19 +12,19 @@
   #our "production" system to avoid having a user see too much about our
   #implementation, but when we are having trouble, try setting this to TRUE
   $debug = TRUE;
-  $host = 'lansong.database.windows.net';
-  $port = '1433';
-  $user = 'lansong@lansong';
-  $password = 'Yl-010802';
-  $dbname = 'dubhacksgame';
+//   $host = 'lansong.database.windows.net';
+//   $port = '1433';
+//   $user = 'lansong@lansong';
+//   $password = 'Yl-010802';
+//   $dbname = 'dubhacksgame';
   
-  #access azure mysql database through ssl
-  $options = array(
-    PDO::MYSQL_ATTR_SSL_CA => 'BaltimoreCyberTrustRoot.crt'
-  );
+//   #access azure mysql database through ssl
+//   $options = array(
+//     PDO::MYSQL_ATTR_SSL_CA => 'BaltimoreCyberTrustRoot.crt'
+//   );
 
-  # Make a data source string that will be used in creating the PDO object
-  $ds = "mysql:host={$host}:{$port};dbname={$dbname};charset=utf8";
+//   # Make a data source string that will be used in creating the PDO object
+//   $ds = "mysql:host={$host}:{$port};dbname={$dbname};charset=utf8";
 
 
   #--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -46,8 +46,8 @@
 
   # Connects to the mysql database
   try {
-    $conn = new PDO("sqlsrv:server = tcp:lansong.database.windows.net,1433; Database = dubhacksgame", "lansong", "Yl-010802");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = new PDO("sqlsrv:server = tcp:lansong.database.windows.net,1433; Database = dubhacksgame", "lansong", "Yl-010802");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // $db = new PDO($ds, $user, $password, $options);
     // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connection successful!";
