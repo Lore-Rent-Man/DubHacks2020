@@ -1,10 +1,13 @@
 class player{
     constructor(){
+
+        this.speed = 3;
+        this.gravity = 2;
+
         this.posX = 0;
         this.posY = 0;
         this.velocityX = 0;
         this.velocityY = 0;
-        this.accel = 0.5;
         this.size = 0;
 
         const idle = new BunnySprite(0.2, '../sprite_folders/pink_monster/Pink_Monster_Idle_4.png', 4);
@@ -18,7 +21,7 @@ class player{
 
         this.moveLeft = false;
         
-        this.numJumps = 1;
+        this.numJumps = 2;
         this.isJumping = false;
     }
 
@@ -41,11 +44,11 @@ class player{
     draw(p)
     {
         if (p.keyIsDown(p.LEFT_ARROW)) {
-            this.velocityX = -3;
+            this.velocityX = -this.speed;
             this.moveLeft = true;
         }
         else if (p.keyIsDown(p.RIGHT_ARROW)) {
-            this.velocityX = 3;
+            this.velocityX = this.speed;
             this.moveLeft = false;
         }
         else
@@ -53,12 +56,14 @@ class player{
             this.velocityX = 0;
         }
 
-        if(p.keyIsDown(p.UP_ARROW) && !this.isJumping)
+        if(p.keyIsDown(p.UP_ARROW) && ((!this.isJumping) || this.numJumps != 0))
         {
-            this.velocityY = -20;
+            this.velocityY = -30;
             this.isJumping = true;
+            this.numJumps--;
         }
-        this.velocityY += this.accel;
+
+        this.velocityY += this.gravity;
 
         this.posX += this.velocityX;
         this.posY += this.velocityY;
@@ -67,6 +72,7 @@ class player{
         {
             player1.posY = app.windowHeight - 32;
             this.isJumping = false;
+            this.numJumps = 2;
         }
         
         if(p.keyIsDown(p.LEFT_ARROW) || p.keyIsDown(p.RIGHT_ARROW) || p.keyIsDown(p.UP_ARROW) || p.keyIsDown(p.DOWN_ARROW))
@@ -89,9 +95,5 @@ class player{
             this.animations[action].show(this.posX, this.posY, p, this.moveLeft);
         }
         this.animations[action].animate();
-    }
-
-    jump(){
-
     }
 }
