@@ -1,6 +1,6 @@
 /* global createCanvas, colorMode, HSB, width, height, random, background, fill, noFill, color, random,
-rect, circle, ellipse, stroke, image, loadImage, frameRate, collideRectRect, collideRectCircle, text, 
-mouseX, mouseY, strokeWeight, line, mouseIsPressed, windowWidth, windowHeight, noStroke, 
+rect, circle, ellipse, stroke, image, loadImage, frameRate, collideRectRect, collideRectCircle, text,
+mouseX, mouseY, strokeWeight, line, mouseIsPressed, windowWidth, windowHeight, noStroke,
 keyCode, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize, noLoop, loop */
 
 let backgroundColor, player, trap1, score;

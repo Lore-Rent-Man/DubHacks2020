@@ -47,16 +47,19 @@ class player{
         {
             if(p.keyCode == p.UP_ARROW && ((!this.isJumping) || this.numJumps != 0))
             {
-                this.velocityY = -8;
+                this.velocityY = -7;
                 this.isJumping = true;
                 this.numJumps--;
             }
         }
     }
 
-    draw(p)
+    draw(p, plats)
     {
-
+        for (let i=0; i<plats.length; i++)
+            if (this.checkCollide(p, plats[i])) {
+                this.velocityX = 0;
+            }
         if (p.keyIsDown(p.LEFT_ARROW)) {
             this.velocityX = -this.speed;
             this.moveLeft = true;
@@ -84,6 +87,24 @@ class player{
             this.isJumping = false;
             this.numJumps = 2;
         }
+
+        for (let i=0; i<plats.length; i++) {
+        if (this.checkCollide(p, plats[i])) {
+            // buttom
+            if (this.posY <= plats[i].posY + plats[i].height && this.posY > plats[i].posY) {
+                console.log(0);
+                this.posY = plats[i].posY + plats[i].height;
+            } else
+            // top
+            if (this.posY + 32 >= plats[i].posY) {
+                console.log(1);
+                this.posY = plats[i].posY - 32;
+                this.isJumping = false;
+                this.numJumps = 2;
+                this.velocityY = 0;
+            }
+        }
+        }
         if(p.isJumping)
         {
             this.drawAction(p, 2);
@@ -109,4 +130,8 @@ class player{
         }
         this.animations[action].animate();
     }
+
+    checkCollide(p, plat) {
+        return p.collideRectRect(this.posX, this.posY, 32, 32, plat.posX, plat.posY, plat.width, plat.height);
+      }
 }
